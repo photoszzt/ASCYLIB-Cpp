@@ -71,7 +71,7 @@ restart:
 #if GC == 1
 					ssmem_free(alloc, (void*) node_new);
 #else
-					free(node_new);
+					free((void *)node_new);
 #endif
 				}
 				return 0;

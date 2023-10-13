@@ -40,14 +40,14 @@ volatile sl_simple<K,V>* allocate_sl_simple_unlinked(K key, V val,
 		node = (volatile sl_simple<K,V>*) ssmem_alloc(alloc, node_size);
 	}
 #else
-	size_ts node_size = size_pad_32;
+	size_t node_size = size_pad_32;
 	if (transactional) {
 		size_t node_size_rm = node_size & 63;
 		if (node_size_rm) {
 			node_size += 64 - node_size_rm;
 		}
 	}
-	node = (volatile sl_simple<K,V>*)malloc(ns);
+	node = (volatile sl_simple<K,V>*)malloc(node_size);
 #endif
 	if (NULL == node) {
 		perror("malloc @ allocate_sl_simple_unlinked");
@@ -86,7 +86,7 @@ void sl_simple_delete(volatile sl_simple<K,V>* node)
 #if GC == 1
 	ssmem_free(alloc, (void*) node);
 #else
-	free(node);
+	free((void *)node);
 #endif
 }
 

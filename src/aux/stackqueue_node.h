@@ -19,7 +19,7 @@ stackqueue_node<T> *allocate_stackqueue_node(T item, stackqueue_node<T> *next)
 	stackqueue_node<T>* node = (stackqueue_node<T>*)
 		ssmem_alloc(alloc, sizeof(*node));
 #else
-	stackqueue_node<T>* node = malloc(size(*node));
+	stackqueue_node<T>* node = (stackqueue_node<T>*)malloc(sizeof(*node));
 #endif
 	node->item = item;
 	node->next = next;

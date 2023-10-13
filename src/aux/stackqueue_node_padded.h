@@ -25,7 +25,7 @@ stackqueue_node_padded<T> *allocate_stackqueue_node_padded(T item,
 	stackqueue_node_padded<T>* node = (stackqueue_node_padded<T>*)
 		ssmem_alloc(alloc, sizeof(*node));
 #else
-	stackqueue_node_padded<T>* node = malloc(size(*node));
+	stackqueue_node_padded<T>* node = (stackqueue_node_padded<T>*)malloc(sizeof(*node));
 #endif
 	node->item = item;
 	node->next = next;
