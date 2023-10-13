@@ -20,7 +20,7 @@ SEARCH_AUX_FILES += ll_array ll_locked ll_marked ll_simple ll_optik
 SEARCH_AUX_FILES += conc_hashmap_segment
 SEARCH_AUX_FILES += sl_simple sl_marked sl_locked
 STACKQUEUE_AUX_FILES += stackqueue_node stackqueue_node_padded
-GC := 1
+GC := 0
 
 SRC_DIR := src
 BIN_DIR := bin
