@@ -108,8 +108,8 @@ ifndef STM
 endif
 
 PLATFORM_NUMA := 0
-ifeq ($(shell dmesg | grep "No NUMA" | wc -l), 0)
-        ifneq ($(shell dmesg | grep "NUMA" | wc -l), 0)
+ifeq ($(shell sudo dmesg | grep "No NUMA" | wc -l), 0)
+        ifneq ($(shell sudo dmesg | grep "NUMA" | wc -l), 0)
                 PLATFORM_NUMA := 1
         endif
 endif
@@ -222,8 +222,8 @@ endif
 ifeq ($(ARCH_NAME), x86_64)
         ARCH = x86_64
         CPPFLAGS += -m64
-        SSPFD = -lsspfd_x86_64
-        LDLIBS += -lssmem_x86_64$(SSMEM_SUFFIX)
+        # SSPFD = -lsspfd_x86_64
+        # LDLIBS += -lssmem_x86_64$(SSMEM_SUFFIX)
 endif
 
 ifeq ($(ARCH_NAME), sun4v)
